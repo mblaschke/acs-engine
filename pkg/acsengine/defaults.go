@@ -430,6 +430,9 @@ func setDefaultCerts(a *api.Properties) (bool, error) {
 	}
 
 	masterExtraFQDNs := FormatAzureProdFQDNs(a.MasterProfile.DNSPrefix)
+	if len(a.MasterProfile.DNSCustom) > 0 {
+		masterExtraFQDNs = append(masterExtraFQDNs, a.MasterProfile.DNSCustom...)
+	}
 	firstMasterIP := net.ParseIP(a.MasterProfile.FirstConsecutiveStaticIP).To4()
 
 	if firstMasterIP == nil {

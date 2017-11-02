@@ -553,7 +553,12 @@ func setDefaultCerts(a *api.Properties) (bool, error) {
 		return false, nil
 	}
 
-	masterExtraFQDNs := FormatAzureProdFQDNs(a.MasterProfile.DNSPrefix)
+	masterExtraFQDNs := []string{}
+	if len(a.MasterProfile.DNSCustom) > 0 {
+		masterExtraFQDNs = a.MasterProfile.DNSCustom
+	} else {
+		masterExtraFQDNs = FormatAzureProdFQDNs(a.MasterProfile.DNSPrefix)
+	}
 	firstMasterIP := net.ParseIP(a.MasterProfile.FirstConsecutiveStaticIP).To4()
 
 	if firstMasterIP == nil {

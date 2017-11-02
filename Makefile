@@ -59,6 +59,7 @@ build: generate
 
 build-binary: generate
 	go build $(GOFLAGS) -v -ldflags "${LDFLAGS}" -o ${BINARY_DEST_DIR}/acs-engine .
+	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -a -installsuffix cgo -o ${BINARY_DEST_DIR}/acs-engine.exe .
 
 # usage: make clean build-cross dist VERSION=v0.4.0
 .PHONY: build-cross

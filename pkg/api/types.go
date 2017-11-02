@@ -243,6 +243,7 @@ type DcosConfig struct {
 type MasterProfile struct {
 	Count                    int               `json:"count"`
 	DNSPrefix                string            `json:"dnsPrefix"`
+	DNSCustom                []string          `json:"dnsCustom"`
 	VMSize                   string            `json:"vmSize"`
 	OSDiskSizeGB             int               `json:"osDiskSizeGB,omitempty"`
 	VnetSubnetID             string            `json:"vnetSubnetID,omitempty"`

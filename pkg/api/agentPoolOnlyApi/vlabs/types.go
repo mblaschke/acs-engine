@@ -32,6 +32,7 @@ type Properties struct {
 	ProvisioningState       ProvisioningState        `json:"provisioningState,omitempty"`
 	KubernetesVersion       string                   `json:"kubernetesVersion"`
 	DNSPrefix               string                   `json:"dnsPrefix" validate:"required"`
+	DNSCustom               []string                 `json:"dnsCustom"`
 	FQDN                    string                   `json:"fqdn,omitempty"`
 	AgentPoolProfiles       []*AgentPoolProfile      `json:"agentPoolProfiles,omitempty" validate:"dive,required"`
 	LinuxProfile            *LinuxProfile            `json:"linuxProfile,omitempty" validate:"required"`
